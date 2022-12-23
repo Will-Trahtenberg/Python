@@ -1,26 +1,36 @@
-karta = list(map(int,input().split()))
-slovar = {}
-karta1 = set(karta)
-print(karta1)
-for i in karta1:
-    slovar[i] = karta.count(i)
-    print(i, karta.count(i))
-s1 = sorted(slovar.values())
-s2 = sorted(slovar.keys())
-if s1 == [1, 4]:
-    print('Каре')
-elif s1 == [2, 3]:
-    print('Фулл хауз')
-elif s1 == [1, 1, 1, 1, 1]:
-    if s2[1] - s2[0] == 1 and s2[2] - s2[1] == 1 and s2[3] - s2[2] == 1 and s2[4] - s2[3] == 1:
-        print('стрит')
-    else:
-        print('старшая карта')
-elif s1 == [1, 1, 3]:
-    print('Сет')
-elif s1 == [1, 2, 2]:
-    print('Две пары')
-elif s1 == [1, 1, 1, 2]:
-    print('Пара')
-elif s1 == [5]:
-    print('шулер')
+class Actor():
+    def __init__(self, name, amplua, rost):
+        self.rost = rost
+        self.name = name
+        self.amplua = amplua
+        self.count = 0
+    def info(self):
+        return 'Actor ' + self.name + self.amplua
+    def joke(self):
+        if self.count == 0:
+                self.count = 1
+                return 'неудачная'
+        else:
+            self.count = 0
+            return 'удачная'
+def buffenoory(self, size):
+        if size > self.rost:
+            return "влез"
+        else:
+            return "не влез"
+    def change_amplua(self, value, register):
+        amplua = self.amplua
+            if register == 'up':
+                amplua = amplua.upper()
+            return amplua.upper()
+        elif register == 'low':
+            amplua = amplua.lower()
+            return amplua.lower()
+A = Actor('Pulcinella ', 'stupid servant ', 160)
+print(A.info())
+print(A.joke())
+print(A.joke())
+print(A.joke())
+print(A.buffenoory(161))
+A.change_amplua('smart servant', 'up')
+print(A.info())

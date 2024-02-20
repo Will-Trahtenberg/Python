@@ -1,16 +1,28 @@
-def calc_bmi(weight, height):  # масса в кг, рост в м
-    index = weight / (height * height)
-    return index
-def print_recomendation(weight, height):
-    a = weight / (height * height)
-    if a <= 18.5:
-        print('У вас недостаточный вес, пройдите на консультацию в кабинет 301')
-    elif a > 18.5 and a <= 25:
-        print('Ваш вес в норме, пройдите на 3 этаж для продолжения осмотра')
-    elif a > 25:
-        print('У вас избыточный вес, пройдите на консультацию в кабинет 410')
-    return a
-weight = float(input('Введите вес (кг): '))
-height = float(input('Введите рост (м): '))
-print_recomendation(weight, height)
-calc_bmi(weight, height)
+import sqlite3
+
+#подлючение к базе данных
+connection = sqlite3.connect('pablic')
+
+#создание таблиц
+cursor = connection.cursor()
+
+punishmane_table = """
+    CREATE  TABLE IF NOT EXISTS punishments (
+    name STRING NOT NULL,
+    second_name STRING NOT NULL,
+    father_name STRING NOT NULL,
+    date_of_birthday DATE
+    );
+"""
+
+regions_jale = """
+    CREATE TABLE IF NOT EXISTS jale_regions (
+    regions STRING NOT NULL,
+    index INT NOT NULL,
+    jail_name STRING NOT NULL
+    );
+"""
+
+cursor.execute(punishmane_table)
+cursor.execute(regions_jale)
+connection.commit()
